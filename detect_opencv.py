@@ -4,7 +4,7 @@ import numpy as np
 import os
 from align import *
 
-cvNet = cv2.dnn.readNetFromCaffe("tmp/mssd512_voc.prototxt" , "tmp/mssd512_voc.caffemodel" )
+cvNet = cv2.dnn.readNetFromCaffe("mssd512_voc.prototxt" , "mssd512_voc.caffemodel" )
 
 def detect(im):
     #im = cv2.cvtColor(im,cv2.COLOR_BGR2RGB)
@@ -41,12 +41,7 @@ def detect(im):
     cv2.waitKey(0)
     
 
-folderk = ""
-for filename in os.listdir(folderk):
-    path = os.path.join(folderk, filename)
-    if filename.lower().endswith(".bmp"):
-        image = cv2.imread(path)
-        #image  = align(image)
-        detect(image)
+image = cv2.imread("../HyperLPR/data/test/15套车检_30010022722_T1.jpg")
+detect(image)
 
 
